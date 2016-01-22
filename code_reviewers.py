@@ -2,6 +2,11 @@
 # @author tberg
 # @date 01.15.2016
 #
+# **NOTE**: Do not use this script as-is unless you trust your input.  I'm
+# using the lazy way of opening the subprocess without sanitizing inputs.
+# This could easily be used to execute other commands if you don't know where
+# your args are coming from.
+#
 # This python script will accept a git project folder argument, a git commit,
 # and optionally a max-authors parameter (default is 5).  With those arguments
 # the script will get the list of files changed for the git commit and then
