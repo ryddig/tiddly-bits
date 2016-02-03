@@ -18,12 +18,11 @@ import os, sys, subprocess
 from collections import defaultdict
 
 replay = False
-replay_url = ""
+replay_domain = ""
 ignore_list = [] # for healthchecks and "noise" that you don't want to see
 
 logs = sys.argv[2:]
 requests_by_time_dict = defaultdict(dict)
-requests_by_path_dict = defaultdict(dict)
 for log in logs:
     with open(os.devnull, 'w') as devnull:
         p = subprocess.check_output("cat " + os.path.abspath(log) + \
@@ -58,5 +57,5 @@ for key in sorted_keys:
 
             if replay:
                 with open(os.devnull, 'w') as devnull:
-                    p = subprocess.check_output("curl '" + replay_url + path + "'",
+                    p = subprocess.check_output("curl '" + replay_domain + path + "'",
                     stderr=devnull, shell=True)
