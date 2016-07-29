@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "${1}" = "help" ] || [ "${1}" = "" ]; then
+    echo "Usage: merge-master <branch>";
+else
+    git checkout master || exit 1;
+    git pull || exit 2;
+    git checkout ${1} || exit 3;
+    git merge origin/master || exit 4;
+    git push origin ${1} || exit 5;
+fi

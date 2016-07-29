@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "${1}" = "help" ] || [ "${1}" = "" ] || "${2}" = "" ]; then
+    echo "Usage: squash <branch> <#commits>";
+elif [ "${1}" = "master" ]; then
+    echo "Yo, don't squash on master." && exit 1;
+else
+    git rebase -i origin/${1}-${2} ${1} || exit 2;
+    git push --force origin ${1} || exit 3;
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "${1}" = "help" ]; then
+    echo "Usage: branch [branch-name]";
+elif [ "${1}" = "" ]; then
+    git branch;
+else
+    git checkout -b ${1}
+fi
